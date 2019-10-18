@@ -1,0 +1,14 @@
+sudo nano /etc/modprobe.d/raspi-blacklist.conf
+
+blacklist spi-bcm2708
+blacklist 12c-bcm2708
+
+#to remove spi support from the blacklist
+#blacklist spi-bcm2708
+blacklist 12c-bcm2708
+
+sudo nano /etc/modules
+
+sudo reboot
+
+ls /dev/spider
