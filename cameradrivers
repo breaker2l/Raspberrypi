@@ -1,0 +1,7 @@
+sudo apt-get update
+sudo apt-get upgrade -y
+sudo apt-get install git-core -y
+sudo wget http://goo.gl/1BOfJ -O /usr/bin/rpi-update
+sudo chmod +x /usr/bin/rpi-update
+sudo rpi-update
+
