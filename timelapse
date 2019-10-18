@@ -1,0 +1,11 @@
+mkdir photos
+raspistill -n -tl 3000 -t 600000 -o photos/photo%04d.jpg
+
+sudo apt-get install libav-tools
+
+cd photos
+avconv -r 4 -i photo%04d.jpg -r 4 -vcodec libx264 -crf 20 -g 15 video.mp4
+
+cd photos
+ffmpeg -qscale 5 -r 4 -b 9600 -i photo%04d.jpg video.mp4
+
