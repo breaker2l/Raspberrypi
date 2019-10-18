@@ -1,4 +1,5 @@
 #maik schmidt
+#Parts Needed A half sized breadboard,PIR sensor , TMP36 Temperature sensor , MCP3008-I/P analog to digitsal converter , Six female/male humper wires
 from pir import *
 from camera import *
 from email_notification import *
