@@ -1,0 +1,22 @@
+#Update the firmware and kernel
+
+uname -a
+ /opt/vc/bin/vcgencmd version
+ 
+ #To install rpi-update 
+ sudo apt-get install ca-certificates git-core
+ sudo wget http://goo.gl/1BOfJ -O /usr/bin/rpi-update
+ sudo chmod +x /usr/bin/rpi-update
+ sudo rpi-update
+ 
+ #configure the video output
+ sudo nano /boot/config.txt
+ 
+ #Test and Configure the Audio System
+ 
+ cd /opt/vc/src/hello_pi/libs/ilclient
+ make
+ cd ../../hello_audio
+ make
+ ./hello_audio.bin
+ 
