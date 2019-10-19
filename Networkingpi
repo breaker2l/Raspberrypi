@@ -1,0 +1,51 @@
+#chromium
+sudo apt-get install chromium
+chromium
+sudo apt-get install iceweasel
+
+#Use Secure shell with the pi
+-Access the pi using a password
+ssh admin@maik-schmidt.de
+
+if you want to access the pi using SSH,first enable the ssh server on the pi using
+sudo raspi-config
+choose the ssh menu item in the advanced options menu and enable the ssh server then click finish button
+ip addr | grep 'inet .* eth0'
+
+#access the pi with a public-private key pair
+
+ls ~/.ssh/id_rsa.pub
+
+ssh-keygen -t rsa -C "youremail@youremail.com"
+
+#Generated key in home directory
+
+scp ~/.ssh/id_rsa.pub pi@192.168.2.109:/tmp
+ssh pi@192.168.2.109 "mkdir ~/.ssh"
+ssh pi@192.168.2.109 "cat /tmp/id_rsa.pub >> ~/.ssh/authorised_keys"
+
+scp ~/.ssh/id_rsa.pub pi@192.168.2.109:/home/pi/.ssh/authorised_keys
+
+#share desktops with the pi
+sudo apt-get install tightvncserver
+tightvncserver
+
+#Turning pi into web server
+sudo apt-get install lighttpd
+
+#setting permission flag
+
+sudo adduser pi www-data
+sudo chown -R www-data:www-data /var/www
+sudo chmod -R 775 /var/www
+nano /var/www/index.html
+
+#remember to replace the ip address with your pi scp (copy)
+scp index.html pi@192.168.2.109:/var/www
+
+#To create dynamic content
+sudo apt-get update
+sudo apt-get install php5-cgi
+sudo lighty-enable-mod fastcgi-php
+sudo /etc/init.d/lighttpd force-reload
+
